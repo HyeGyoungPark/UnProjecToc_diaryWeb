@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DIARY</title>
+        <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons"> <!--아이콘을 사용하기 위해서 사용-->
+        <style>
+            body{
+                margin: 0px;
+                padding: 0px;
+            }
+
+            header{
+                width: 100%;
+                height: 200px;
+                background-color: #435399;   /*헤더 스타일 입니다.*/
+                text-align: center;
+            }
+
+            header > div{
+                float: center;
+            }
+
+            header h1, header p{
+                color: white;
+                text-align: center;
+                margin: 30px;
+            }
+
+            nav{
+                clear: both;
+                height: 40px;
+                background-color: #9097DE;
+                text-align: center;
+            }
+
+            nav a{
+                width: 150px;
+                height: 40px;
+                padding: 5px;
+                display: inline-block;
+                text-decoration: none;
+                text-align: center;
+            }
+
+            nav a:link, nav a:visited{
+                color: white;
+            }
+
+            nav a:hover, nav a:active{
+                background-color: white;
+                color: #9097DE;
+            }
+
+            section{
+                margin: 10px;
+                padding: 20px;
+                width: 45%;
+                height: 500px;
+                float: left;
+                border: solid 1px #9097DE;
+                box-sizing: border-box;
+            }
+
+            h2{
+                margin: 10px;
+                padding: 20px;
+                background-color: #435399;
+                color: white;
+            }
+
+            section p, section ul, section ol{
+                padding-left: 50px;
+            }
+
+            section a{
+                width: 80%;
+                height: 15px;
+                padding: 5px;
+                display: inline-block;
+                text-decoration: none;
+            }
+
+           footer{
+               clear: both;
+               height: 50px;
+               background-color: #eaeaea;
+               color: #9097DE;
+               padding: 20px;
+               font-size: 12px;
+           }
+           #msg {
+                border: 2px solid #9097DE ;     /*msg 는 오늘 한 일 섹션에 textarea 부분의 스타일에 해당한다*/
+                margin-top : 10px;
+                margin-left : 10px;
+                width : 97%;
+                height : 350px;
+                box-sizing : border-box;
+            }
+
+            #txt_name{
+                text-align:center;
+                background-color:white ;    /*헤더에 이름 적는 부분 스타일에 해당한다*/
+                height: 40px;
+            }
+
+            #map{                             /*지도 부분 css에 해당한다*/
+                margin-left:10px;
+                width:98%;
+                height:300px;
+            }
+            #use {
+                border: 2px solid #9097DE ;     /*use. earn. total_use 는 오늘 나의 지갑 섹션에 스타일에 해당한다* float : left;를 이용해서 세 개가 가로로 붙도록 했습니다.*/
+                margin-top : 10px;
+                margin-left: 20px;
+                padding: 20px;
+                width : 100px;
+                height : 200px;
+                box-sizing : border-box;
+                float: left;
+            }
+            #earn {
+                border: 2px solid #9097DE ;
+                margin-top : 10px;
+                margin-left: 15px;
+                padding: 20px;
+                width : 100px;
+                height : 200px;
+                box-sizing : border-box;
+                float: left;
+            }
+            #total_use {
+                border: 2px solid #9097DE ;
+                margin-top : 10px;
+                margin-left: 15px;
+                margin-right:5px;
+                padding: 20px;
+                width : 100px;
+                height : 200px;
+                box-sizing : border-box;
+                float: left ;
+            }
+
+            #tbl0{                               /*날씨 섹션의 표 스타일에 해당한다*/
+            width : 45%;
+            border : 2px solid #435399;
+            }
+
+            #tbl0 th{
+                border : 1px solid #435399;
+                text-align: center;
+            }
+
+            #tbl0 td{
+                border : 1px solid #435399;
+                text-align: center;
+            }
+
+            #wea{
+                margin-left: 10px;
+            }
+            
+
+        </style>
+    </head>
+    <body>
+        <header>
+            <div>
+                <h1>DIARY</h1>
+                <p>
+                    <input type="text" name="txt_name" id="txt_name" placeholder="당신의 이름">   <!--헤더에 이름을 적는 칸-->
+                </p>
+            </div>
+           
+        </header>
+        <nav>
+            <a href="#s1">[오늘 한 일]</a>     <!--nav 기능으로 바로 날씨 기록하고 싶으면 내려갈 수 있다-->
+            <a href="#s2">[오늘 간 곳]</a>
+            <a href="#s3">[오늘 나의 지갑]</a>
+            <a href="#s4">[날씨]</a>
+        </nav>
+        <section id="s1">
+            <h2 class="c1"><i class="material-icons">today</i>&nbsp;&nbsp;오늘 한 일</h2> 
+            <textarea placeholder="다이어리 작성하기" name="txt_content" id="msg" >  
+            </textarea>
+                <!--textarea로 해서 사용하는 문자에 구애받지 않게 했고, 칸의 크기도 조절할 수 있게 했다-->
+        
+        </section>
+        <section id="s2">
+            <h2 class="c2"><i class="material-icons">room</i>&nbsp;&nbsp;오늘 간 곳</h2>
+            <p class="pc3">
+                <div id="map"></div>
+                <p>
+                    <button onclick="hideMarkers()">마커 다시하기</button>
+                </p> 
+                <em>클릭한 위치에 마커가 표시됩니다!</em>
+                    
+                <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=fbb539f998f9d6b3f5cdb86ed95813f8"></script>
+                <script>
+                var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+                    mapOption = { 
+                        center: new kakao.maps.LatLng(35.23339810762033, 129.07839449961048), // 지도의 중심좌표. 부산대로 잡았다.
+                        level: 3 // 지도의 확대 레벨
+                    };
+                
+                var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+                
+                // 지도를 클릭했을때 클릭한 위치에 마커를 추가하도록 지도에 클릭이벤트를 등록합니다
+                kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
+                    // 클릭한 위치에 마커를 표시합니다 
+                    addMarker(mouseEvent.latLng);             
+                });
+                
+                // 지도에 표시된 마커 객체를 가지고 있을 배열입니다
+                var markers = [];
+                
+                // 마커 하나를 지도위에 표시합니다. 부산대 좌표입니다.
+                addMarker(new kakao.maps.LatLng(35.23339810762033, 129.07839449961048));
+                
+                // 마커를 생성하고 지도위에 표시하는 함수입니다
+                function addMarker(position) {
+                    
+                    // 마커를 생성합니다
+                    var marker = new kakao.maps.Marker({
+                        position: position
+                    });
+                
+                    // 마커가 지도 위에 표시되도록 설정합니다
+                    marker.setMap(map);
+                    
+                    // 생성된 마커를 배열에 추가합니다
+                    markers.push(marker);
+                }
+                
+                // 배열에 추가된 마커들을 지도에 표시하거나 삭제하는 함수입니다
+                function setMarkers(map) {
+                    for (var i = 0; i < markers.length; i++) {
+                        markers[i].setMap(map);
+                    }            
+                }
+                
+                // "마커 감추기" 버튼을 클릭하면 호출되어 배열에 추가된 마커를 지도에서 삭제하는 함수입니다
+                function hideMarkers() {
+                    setMarkers(null);    
+                }
+                </script>
+
+
+        </section>
+
+
+        <section id="s3">
+            <h2 class="c1"><i class="material-icons">receipt</i>&nbsp;&nbsp;오늘 나의 지갑</h2>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;오늘의 소비&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;오늘의 수입&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;오늘 지갑은<br>
+                
+                <div id="use"></div>  <!--스타일에서 네모칸을 만들기 위해 지정한 div 3가지입니다-->
+                
+                <div id="earn"></div>
+                
+                <div id="total_use"></div>
+
+            <p>
+                &nbsp;<form name="form1">
+                    <input type="text" name="txt1" id="txt1" placeholder="소비 입력">      <!--소비 입력을 위한 칸. 수입 입력도 같은 구조이다. 함수 이름만 다를 뿐. 숫자는 하나만 입력됩니다.-->
+                    <input type="button" value="확인" onclick="show1();">                 <!--확인을 누르면 입력한 숫자를 네모칸에 넣습니다-->
+                    <input type="reset" value="취소" onclick="erase1();">                 <!--취소를 누르면 0을 입력한 것과 같은 것으로 봅니다.-->
+                </form>
+                <br>
+                <form name="form2">
+                    <input type="text" name="txt2" id="txt2" placeholder="수입 입력">      <!--수입 입력을 위한 칸-->
+                    <input type="button" value="확인" onclick="show2();">
+                    <input type="reset" value="취소" onclick="erase2();">
+                </form>
+                <br>
+                <form name="form3">
+                    입력 후 <input type="button" value="완료" onclick="result();">를 눌러주세요 
+                </form>
+                
+            </p>
+
+            <script>
+                function show1(){                       //show1 함수. 소비 입력란에 사용된다. 숫자가 아니면 alert를 울린다. 숫자이면 elementID가 use인 곳의 html 안에 값을 넣는다
+                    var str = "" ;
+                    str = form1.txt1.value ;
+                    if (isNaN(str)){
+                        alert("숫자만 가능합니다");
+                            form1.txt1.focus();
+                            return;
+                    }
+                    else{
+                        document.getElementById("use").innerHTML = str; 
+                    }
+                }
+                function show2(){                    //show2 함수. 소비 입력 함수와 동일한 방식으로 작동합니다.
+                    var str = "" ;
+                    str = form2.txt2.value ;
+                    if (isNaN(str)){
+                        alert("숫자만 가능합니다");
+                            form2.txt2.focus();
+                            return;
+                    }
+                    else{
+                        document.getElementById("earn").innerHTML = str;
+                    }                  
+                }
+
+                function erase1(){                                  //취소 버튼을 눌렀을 때 작동하는 함수. 
+                    document.getElementById("use").innerHTML = 0;   //값에 0을 입력합니다. erase1은 소비. erase2는 수입에 관계있는 함수입니다.
+                }
+                function erase2(){
+                    document.getElementById("earn").innerHTML = 0;
+                }
+                
+                function result(){
+                   var str1 = parseInt(form1.txt1.value)*(-1);               //완료를 누르면 작동합니다. 만약 소비 입력란과 소득 입력란 중 하나라도 비어있으면 alert가 뜹니다.
+                   var str2 = parseInt(form2.txt2.value);                    //소비 값*(-1)의 값과 소득 값을 더해서 str3에 넣습니다. 이는 오늘 지갑이 플러스 인지 마이너스인지 보여줍니다.
+                   var str3 = str1+str2;
+
+                   if (isNaN(str3)&(form1.txt1.value.length==0|form2.txt2.value.length==0)){   //소비와 소득 중 하나라도 비어있으면 alert가 뜨게 하는 부분입니다.
+                       alert("칸을 비울 수 없습니다. 0원이면 0을 입력해주세요")
+                       form1.txt.focus();
+                       return;
+                   }
+                   else{
+                    document.getElementById("total_use").innerHTML = str3;    //소비와 소득란이 비어있지 않으면 소득-소비 한 값(str3)을 ID가 total_use인 곳에 넣습니다.
+                   }
+
+                   
+                }
+                
+            </script>
+            </section>
+        <section id="s4">
+            <h2 class="c2"><i class="material-icons">wb_sunny</i>&nbsp;&nbsp;날씨 </h2>
+            <div id=wea>
+            아래의 정보 입력 후&nbsp;&nbsp;<button onclick="displayResponse()">확인</button>을 누르세요.&nbsp;오늘의 날씨만 볼 수 있습니다.<br>  <!--확인 버튼을 누르면 displayResponse 함수가 작동합니다-->
+            x좌표, y좌표 : 공공데이터포털 참고문서에서 찾을 수 있다.<br>
+            <a href="https://www.data.go.kr/data/15057682/openapi.do" target="_blank">공공데이터포털 바로가기</a><br>        <!--공공데이터포털 바로가기를 누르면 새 창에서 공공데이터포털 창이 열립니다-->
+
+            <script>
+                var xhr = new XMLHttpRequest();
+                xhr.withCredentials = true;
+                xhr.addEventListener("readystatechange", function () {
+                    if (myform.base_date.value.length==8 & myform.base_time.value.length==4) {   //base_data와 base_time은 요구되는 형식이 있기 때문에 글자수가 요구되는 값에서 하나라도 벗어나면 alert를 띄웁니다
+                        if(myform.base_time.value==0200| myform.base_time.value==0500 | myform.base_time.value==0800 | myform.base_time.value==1100 | myform.base_time.value==1400 | myform.base_time.value==1700 | myform.base_time.value==2000 |myform.base_time.value==2300){
+                                                                                             //위의 값은 api를 사용함에 있어서 base_time도 정해진 시간대에서만 작동이 됩니다. 따라서 요구되는 시간대가 아닐 경우 alert를 띄웁니다.
+                            if (this.readyState === 4) {
+
+                                var parsed = JSON.parse(this.responseText);
+                                var tbl = document.getElementById('tbl0');            
+                                for(i in parsed.response.body.items.item){
+                                    if (0<i & i<4){                                           //사용하고자 하는 데이터는 i 값이 1에서 3까지 입니다. 그래서 조건을 걸었습니다.
+
+                                        var cuur = parsed.response.body.items.item[i].category;
+
+                                        var caaar = parsed.response.body.items.item[i].fcstValue;
+
+                                        var tr = document.createElement('tr');
+                                        var td3 = document.createElement('td');
+                                        var td6 = document.createElement('td');
+
+                                        td3.innerHTML = JSON.stringify(cuur);
+                                        td6.innerHTML = JSON.stringify(caaar);
+
+                                        tr.appendChild(td3);
+                                        tbl.appendChild(tr)
+                                        
+                                        tr.appendChild(td6);
+                                        tbl.appendChild(tr)
+                                        }
+                                    else{
+                                        i++                                                    //i가 원하는 범위 밖이면 i++로 넘어가게끔 해서 원하는 값만 불러왔습니다.
+                                    }
+                                }
+                            }
+                        }
+                        else{
+                            alert("발표시간은 이미 지나간 시간, 그리고 0200, 0500, 0800, 1100, 1400, 1700, 2000, 2300 에서 골라주세요");   //위에서 base_time의 요구되는 시간대가 아닐 경우 뜨는 alert 입니다.
+                            myform.base_time.focus();
+                            return;  
+
+                        }
+                    }
+                    else{
+                        if (myform.base_date.value.length!=8){
+                            alert("발표일자를 알맞은 형식으로 입력해주세요");      //base_date의 글자수가 맞지 않을 경우 뜨는 alert 입니다.
+                            myform.base_date.focus();
+                            return;  
+                        }
+
+                        if (myform.base_time.value.length!=4){
+                            alert("발표시각을 알맞은 형식으로 입력해주세요");      //base_time의 글자수가 맞지 않을 경우 뜨는 alert 입니다.
+                            myform.base_time.focus();
+                            return;
+                        }
+                        
+
+                    }
+                });
+                
+                function displayResponse(){
+                    var url = "http://localhost:3000/weather"                  //확인을 눌렀을 때 작동하는 함수입니다.
+
+                    var base_date = document.getElementById('base_date').value;
+                    var base_time = document.getElementById('base_time').value;
+                    var nx = document.getElementById('nx').value;
+                    var ny = document.getElementById('ny').value;
+                    var dataType = document.getElementById('dataType').value;
+
+                    url = url + "?" + "&base_date="+base_date +"&base_time="+base_time +"&nx="+nx +"&ny="+ny +"&dataType="+dataType 
+
+                    xhr.open("GET", url);
+                    xhr.send();
+                }
+
+
+            </script>
+
+            <form name="myform">
+                <label for='base_date'> 발표일자:</label>
+                <input type="text" id='base_date' name='base_date' placeholder='20200617'><br>  <!--입력란에 placeholder로 형식을 미리 적어 놓았습니다.-->
+                <label for='base_time'> 발표시각:</label>
+                <input type="text" id='base_time' name='base_time' placeholder='0800'><br>
+                <label for='nx'> 예보지점x좌표:</label>
+                <input type="text" id='nx' name='nx' placeholder='98'><br>
+                <label for='ny'> 예보지점y좌표:</label>
+                <input type="text" id='ny' name='ny' placeholder='77'><br>
+                <label for='dataType'> 데이터 타입:</label>
+                <input type="text" id='dataType' name='dataType' value='json'><br>
+            </form>
+
+
+            <table id="tbl0" >                              <!--데이터가 들어올 표 입니다.-->
+                <th>category</th>
+                <th>fcstValue</th>
+            </table>
+
+                PTY = 강수형태. fcstValue 코드: 없음(0), 비(1), 비/눈 섞여서(2), 눈(3), 소나기(4)   <!--데이터가 들어온 후 데이터 이해를 위한 추가 정보 입니다.-->
+                <br>
+                REH = 습도.     fcstValue : %를 의미합니다.
+                <br>
+                SKY = 하늘상태. fcstValue 코드: 맑음(1), 구름많음(3), 흐림(4)
+        </div>
+        </section>
+        <footer>
+            &copy;HyeGyoung Park       
+        </footer>
+
+
+    </body>
+</html>
