@@ -1,0 +1,155 @@
+
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+header{
+    width: 100%;
+    height: 200px;
+    background-color: #435399;   /*헤더 스타일 입니다.*/
+    text-align: center;
+}
+
+header > div{
+    float: center;
+}
+
+header h1, header p{
+    color: white;
+    text-align: center;
+    margin: 30px;
+}
+
+nav{
+    clear: both;
+    height: 40px;
+    background-color: #9097DE;
+    text-align: center;
+}
+
+nav a{
+    width: 150px;
+    height: 40px;
+    padding: 5px;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+}
+
+nav a:link, nav a:visited{
+    color: white;
+}
+
+nav a:hover, nav a:active{
+    background-color: white;
+    color: #9097DE;
+}
+
+section{
+    margin: 10px;
+    padding: 20px;
+    width: 45%;
+    height: 500px;
+    float: left;
+    border: solid 1px #9097DE;
+    box-sizing: border-box;
+}
+
+h2{
+    margin: 10px;
+    padding: 20px;
+    background-color: #435399;
+    color: white;
+}
+
+section p, section ul, section ol{
+    padding-left: 50px;
+}
+
+section a{
+    width: 80%;
+    height: 15px;
+    padding: 5px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+footer{
+    clear: both;
+    height: 50px;
+    background-color: #eaeaea;
+    color: #9097DE;
+    padding: 20px;
+    font-size: 12px;
+}
+#msg {
+    border: 2px solid #9097DE ;     /*msg 는 오늘 한 일 섹션에 textarea 부분의 스타일에 해당한다*/
+    margin-top : 10px;
+    margin-left : 10px;
+    width : 97%;
+    height : 350px;
+    box-sizing : border-box;
+}
+
+#txt_name{
+    text-align:center;
+    background-color:white ;    /*헤더에 이름 적는 부분 스타일에 해당한다*/
+    height: 40px;
+}
+
+#map{                             /*지도 부분 css에 해당한다*/
+    margin-left:10px;
+    width:95%;
+    height:250px;
+}
+#use {
+    border: 2px solid #9097DE ;     /*use. earn. total_use 는 오늘 나의 지갑 섹션에 스타일에 해당한다* float : left;를 이용해서 세 개가 가로로 붙도록 했습니다.*/
+    margin-top : 10px;
+    margin-left: 20px;
+    padding: 20px;
+    width : 100px;
+    height : 200px;
+    box-sizing : border-box;
+    float: left;
+}
+#earn {
+    border: 2px solid #9097DE ;
+    margin-top : 10px;
+    margin-left: 15px;
+    padding: 20px;
+    width : 100px;
+    height : 200px;
+    box-sizing : border-box;
+    float: left;
+}
+#total_use {
+    border: 2px solid #9097DE ;
+    margin-top : 10px;
+    margin-left: 15px;
+    margin-right:5px;
+    padding: 20px;
+    width : 100px;
+    height : 200px;
+    box-sizing : border-box;
+    float: left ;
+}
+
+#tbl0{                               /*날씨 섹션의 표 스타일에 해당한다*/
+width : 45%;
+border : 2px solid #435399;
+}
+
+#tbl0 th{
+    border : 1px solid #435399;
+    text-align: center;
+}
+
+#tbl0 td{
+    border : 1px solid #435399;
+    text-align: center;
+}
+
+#wea{
+    margin-left: 10px;
+}
