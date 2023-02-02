@@ -101,7 +101,7 @@ footer{
 }
 
 #msg {
-    border: 2px solid #9097DE ;     /*msg 는 오늘 한 일 섹션에 textarea 부분의 스타일에 해당한다*/
+    border: 2px solid #d1e2ff ;     /*msg 는 오늘 한 일 섹션에 textarea 부분의 스타일에 해당한다*/
     margin-top : 10px;
     margin-left : 10px;
     width : 97%;
@@ -109,6 +109,7 @@ footer{
     box-sizing : border-box;
     float : left;
     resize: none;
+    border-radius: 1em
 }
 
 #txt_name{
@@ -263,12 +264,13 @@ footer{
     margin-left: 10px;
     width: 95%;
     height: 35px;
-    border: 2px solid #9097DE ;
+    border: 2px solid #d1e2ff ;
+    border-radius: 1em;
 }
 
 .img_btn{
-    border : 1px solid #435399;
-    background-color : #435399 ;
+    border : 1px solid #d1e2ff;
+    background-color : #d1e2ff ;
     text-align: center;
     font-size: 20px;
     color : white;
@@ -278,6 +280,7 @@ footer{
     height : 50px;
     box-sizing : border-box;
     float : left;
+    border-radius: 1em;
 }
 
 .img_btn:hover{
@@ -285,11 +288,12 @@ footer{
     border : 1px solid #435399;
     color: #435399;
     transition: 0.7s;
+
 }
 
 .img_btn:active{
     background-color:gray;
-    border : 1px solid #435399;
+    border : 1px solid #d1e2ff;
     color: white;
     transition: 0.2s;
 }
@@ -300,8 +304,9 @@ footer{
     margin-right: 2%;
     width: 96%;
     height: 50px;
-    background-color: #435399;
+    background-color: #d1e2ff;
     color: white;
+    border-radius: 1em
 }
 
 #save_btn:hover{
@@ -309,7 +314,7 @@ footer{
     /* box-shadow: 0 50px 0 0  rgba(0,0,0,0.25) inset, 
     0 -50px 0 0 rgba(0,0,0,0.25) inset; */
     background-color:white;
-    border : 1px solid #435399;
+    border : 1px solid #d1e2ff;
     color: #435399;
 }
 
