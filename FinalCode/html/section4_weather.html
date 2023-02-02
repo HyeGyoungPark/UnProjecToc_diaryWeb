@@ -1,44 +1,99 @@
 <!DOCTYPE html>
 
 <head>
-    <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons"> <!--아이콘을 사용하기 위해서 사용-->
-    <link rel="stylesheet" href="./design.css">
+  <link
+    rel="stylesheet"
+    href="http://fonts.googleapis.com/icon?family=Material+Icons"
+  />
+  <!--아이콘을 사용하기 위해서 사용-->
+  <link rel="stylesheet" href="./design.css" />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+  />
 </head>
 
 <body>
-    <h2 class="c2"><i class="material-icons">wb_sunny</i>&nbsp;&nbsp;날씨 </h2>
-    <script type="text/javascript" src="./section4_weather.js"></script>
-        <div id=wea>
-            아래의 정보 입력 후&nbsp;&nbsp;<button onclick="displayResponse()">확인</button>을 누르세요.&nbsp;오늘의 날씨만 볼 수 있습니다.<br>  <!--확인 버튼을 누르면 displayResponse 함수가 작동합니다-->
-            x좌표, y좌표 : 공공데이터포털 참고문서에서 찾을 수 있다.<br>
-            <a href="https://www.data.go.kr/data/15084084/openapi.do" target="_blank">공공데이터포털 바로가기</a><br>        <!--공공데이터포털 바로가기를 누르면 새 창에서 공공데이터포털 창이 열립니다-->
-                
+  <h2 class="c2" id =  "h2"><i class="material-icons">wb_sunny</i>&nbsp;&nbsp;날씨</h2>
+  <script type="text/javascript" src="./section4_weather.js"></script>
+  <div id="wea">
+    오늘의 날씨 기록하기 &nbsp;&nbsp;<button onclick="displayResponse()">
+      확인하기!
+    </button>
+    <br />
+    &nbsp;오늘의 날씨만 볼 수 있습니다.<br />
+    <!--확인 버튼을 누르면 displayResponse 함수가 작동합니다-->
 
-            <form name="myform">
-                <label for='base_date'> 발표일자:</label>
-                <input type="text" id='base_date' name='base_date' placeholder='20200617'><br>  <!--입력란에 placeholder로 형식을 미리 적어 놓았습니다.-->
-                <label for='base_time'> 발표시각:</label>
-                <input type="text" id='base_time' name='base_time' placeholder='0800'><br>
-                <label for='nx'> 예보지점x좌표:</label>
-                <input type="text" id='nx' name='nx' placeholder='98'><br>
-                <label for='ny'> 예보지점y좌표:</label>
-                <input type="text" id='ny' name='ny' placeholder='77'><br>
-                <label for='dataType'> 데이터 타입:</label>
-                <input type="text" id='dataType' name='dataType' value='json'><br>
-            </form>
+    <form name="myform">
+      <label for="base_date"> 오늘의 날짜 : </label>
+      <input
+        type="text"
+        id="base_date"
+        name="base_date"
+        placeholder="20200617"
+      /><br />
+      <!--입력란에 placeholder로 형식을 미리 적어 놓았습니다.-->
+      <label for="base_time" 
+      > 발표시각 : </label>
+      <select id="base_time"
+      name="base_time">
+        <option value = "0200">2am</option>
+        <option value = "0500">5am</option>
+        <option value = "0800">8am</option>
+        <option value = "1100">11am</option>
+        <option value = "1400">2pm</option>
+        <option value = "1700">5pm</option>
+        <option value = "2000">8pm</option>
+        <option value = "2300">11pm</option>
+      </select>
+      <!-- <input
+        type="text"
+        id="base_time"
+        name="base_time"
+        placeholder="0800"/> -->
+        <br />
 
+      <label for="region"> 내가 사는 곳 : </label>
+      <select name="region" id="region">
+        <option value=""></option>
+        <option value="seoul" selected>서울특별시</option>
+        <option value="">부산광역시</option>
+        <option value="">대구광역시</option>
+        <option value="">인천광역시</option>
+        <option value="">광주광역시</option>
+        <option value="">울산광역시</option>
+        <option value="">세종특별자치시</option>
+        <option value="">경기도</option>
+        <option value="">강원도</option>
+        <option value="">충청북도</option>
+        <option value="">충청남도</option>
+        <option value="">경상북도</option>
+        <option value="">경상남도</option>
+        <option value="">전라북도</option>
+        <option value="">전라남도</option>
+        <option value="">제주도</option>
+      </select>
+      <br />
 
-            <table id="tbl0" >                              <!--데이터가 들어올 표 입니다.-->
-                <th>category</th>
-                <th>fcstValue</th>
-            </table>
+      <!-- <label for='dataType'> 데이터 타입:</label>
+                <input type="text" id='dataType' name='dataType' value='json'><br> -->
+    </form>
 
-                PTY = 강수형태. fcstValue 코드: 없음(0), 비(1), 비/눈 섞여서(2), 눈(3), 소나기(4)   <!--데이터가 들어온 후 데이터 이해를 위한 추가 정보 입니다.-->
-                <br>
-                REH = 습도.     fcstValue : %를 의미합니다.
-                <br>
-                SKY = 하늘상태. fcstValue 코드: 맑음(1), 구름많음(3), 흐림(4)
-        </div>
+    <div>
+      &nbsp;<br />
+      <span class="material-symbols-outlined" id="weather_icon">favorite</span>
+      <p id = "weather_explain"> 오늘은 날씨는 ~</p> <!--데이터가 들어온 후 데이터 이해를 위한 추가 정보 입니다.-->
+    </div>
 
+   
+   
+    <br />
 
+    출처 &nbsp;&nbsp;<a
+      href="https://www.data.go.kr/data/15084084/openapi.do"
+      target="_blank"
+      >공공데이터포털</a
+    ><br />
+    <!--공공데이터포털 바로가기를 누르면 새 창에서 공공데이터포털 창이 열립니다-->
+  </div>
 </body>

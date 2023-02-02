@@ -3,36 +3,53 @@
 <head>
     <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons"> <!--아이콘을 사용하기 위해서 사용-->
     <link rel="stylesheet" href="./design.css">
+    <script type="text/javascript" src="./section3_wallet.js"></script>
 
 </head>
 
 <body>
-    <h2 class="c1"><i class="material-icons">receipt</i>&nbsp;&nbsp;오늘 나의 지갑</h2>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;오늘의 소비&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;오늘의 수입&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;오늘 지갑은<br>
-    <script type="text/javascript" src="./section3_wallet.js"></script>
-                <div id="use"></div>  <!--스타일에서 네모칸을 만들기 위해 지정한 div 3가지입니다-->
-                
-                <div id="earn"></div>
-                
-                <div id="total_use"></div>
+    <h2 class="c1" id =  "h2">
+        <i class="material-icons">receipt</i>&nbsp;&nbsp;오늘 나의 지갑</h2>
+        <p id = "total_money">오늘 지갑은</p>
 
-            <p>
-                &nbsp;<form name="form1">
-                    <input type="text" name="txt1" id="txt1" placeholder="소비 입력">      <!--소비 입력을 위한 칸. 수입 입력도 같은 구조이다. 함수 이름만 다를 뿐. 숫자는 하나만 입력됩니다.-->
-                    <input type="button" value="확인" onclick="show1();">                 <!--확인을 누르면 입력한 숫자를 네모칸에 넣습니다-->
-                    <input type="reset" value="취소" onclick="erase1();">                 <!--취소를 누르면 0을 입력한 것과 같은 것으로 봅니다.-->
-                </form>
-                <br>
-                <form name="form2">
-                    <input type="text" name="txt2" id="txt2" placeholder="수입 입력">      <!--수입 입력을 위한 칸-->
-                    <input type="button" value="확인" onclick="show2();">
-                    <input type="reset" value="취소" onclick="erase2();">
-                </form>
-                <br>
-                <form name="form3">
-                    입력 후 <input type="button" value="완료" onclick="result();">를 눌러주세요 
-                </form>
-                
-            </p>
+        <div id="total_use">₩0</div>
+
+   
+    
+        <div id ="use_all">
+            오늘의 소비 <br>
+                <div id="use" ></div>
+        
+        </div>
+
+        <div  id="earn_all">
+            오늘의 수입<br>
+             <div id="earn" ></div>
+        </div>
+           
+       
+
+    <div id = "form_input">
+         <p>
+        <form id="form1">
+            <input type="text" name="txt1" id="txt1" placeholder="소비 입력">      <!--소비 입력을 위한 칸. 수입 입력도 같은 구조이다. 함수 이름만 다를 뿐. 숫자는 하나만 입력됩니다.-->
+            <input type="button" value="확인" onclick="show1();">                 <!--확인을 누르면 입력한 숫자를 네모칸에 넣습니다-->
+            <input type="reset" value="취소" onclick="erase1();">                 <!--취소를 누르면 0을 입력한 것과 같은 것으로 봅니다.-->
+        </form>
+        
+        <form id="form2">
+            <input type="text" name="txt2" id="txt2" placeholder="수입 입력">      <!--수입 입력을 위한 칸-->
+            <input type="button" value="확인" onclick="show2();">
+            <input type="reset" value="취소" onclick="erase2();">
+        </form>
+        <br>
+        
+    </p>
+    </div>
+    <div>
+        <form id="form3">
+            입력 후 <input type="button"  value="완료" onclick="result();">를 눌러주세요. 
+        </form>
+    </div>
 
 </body>

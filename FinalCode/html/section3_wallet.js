@@ -43,6 +43,9 @@ function result(){
     else{
     document.getElementById("total_use").innerHTML = str3;    //소비와 소득란이 비어있지 않으면 소득-소비 한 값(str3)을 ID가 total_use인 곳에 넣습니다.
     }
+}
 
-    
+function change_theme(){
+    const header = document.getElementById('h2');
+    header.style.cssText = ' background color : black';
 }
