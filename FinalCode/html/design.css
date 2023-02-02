@@ -1,4 +1,3 @@
-
 body{
     margin: 0px;
     padding: 0px;
@@ -9,8 +8,17 @@ header{
     height: 200px;
     background-color: #435399;   /*헤더 스타일 입니다.*/
     text-align: center;
+    background: linear-gradient(to right, #f6ffd9, #c1d3ff); 
+    border-radius: 3px; color: #ffffff;
+    color: #c977ff,#f3bed7;;
 }
 
+#theme_change{
+    text-align: right;
+    border: none;
+    background-color: none;
+
+}
 header > div{
     float: center;
 }
@@ -24,8 +32,15 @@ header h1, header p{
 nav{
     clear: both;
     height: 40px;
-    background-color: #9097DE;
+    background: linear-gradient(to right, #f6ffd9, #c1d3ff); 
+    /* background-color: hsl(255, 100%, 83%); */
     text-align: center;
+    color: #ffffff;
+    border-radius: 1em; 
+
+   
+     box-shadow: 1px 2px 10px rgba(0,0,0,0.1);  
+
 }
 
 nav a{
@@ -52,15 +67,16 @@ section{
     width: 45%;
     height: 500px;
     float: left;
-    border: solid 1px #9097DE;
+    border: solid 1px #535785;
     box-sizing: border-box;
 }
 
 h2{
     margin: 10px;
     padding: 20px;
-    background-color: #435399;
+    background-color: #d1e2ff;
     color: white;
+    border-radius: 1em; 
 }
 
 section p, section ul, section ol{
@@ -76,13 +92,14 @@ section a{
 }
 
 footer{
-    clear: both;
-    height: 50px;
-    background-color: #eaeaea;
-    color: #9097DE;
-    padding: 20px;
-    font-size: 12px;
+   clear: both;
+   height: 50px;
+   background-color: #eaeaea;
+   color: #9097DE;
+   padding: 20px;
+   font-size: 12px;
 }
+
 #msg {
     border: 2px solid #9097DE ;     /*msg 는 오늘 한 일 섹션에 textarea 부분의 스타일에 해당한다*/
     margin-top : 10px;
@@ -105,55 +122,130 @@ footer{
     width:95%;
     height:250px;
 }
-#use {
-    border: 2px solid #9097DE ;     /*use. earn. total_use 는 오늘 나의 지갑 섹션에 스타일에 해당한다* float : left;를 이용해서 세 개가 가로로 붙도록 했습니다.*/
-    margin-top : 10px;
-    margin-left: 20px;
-    padding: 20px;
-    width : 100px;
-    height : 200px;
-    box-sizing : border-box;
-    float: left;
+#txt_name{
+    text-align:center;
+    background-color:white ;    /*헤더에 이름 적는 부분 스타일에 해당한다*/
+    height: 40px;
 }
-#earn {
-    border: 2px solid #9097DE ;
-    margin-top : 10px;
-    margin-left: 15px;
-    padding: 20px;
-    width : 100px;
-    height : 200px;
+
+#map{                             /*지도 부분 css에 해당한다*/
+    margin-left:10px;
+    width:98%;
+    height:300px;
+}
+
+#use_all{
+    text-align: center;
+    width:45%;
+    height: 30%;
+    float: left;;
+    border-bottom: 2px solid #9097DE ;  
+    /* padding-right: 30%; */
+}
+#use {
+    display: inline-block;
+    border-top: 2px solid #9097DE ;  
+    /* margin-left: 40px;
+    margin-right: 40px; */
+    padding: 30%;
+    width : 20px;
+    height: 20px;
     box-sizing : border-box;
-    float: left;
+    align-items: center;
+    text-align: center;
+}
+#earn_all{
+    /* display: inline-block; */
+    width: 45%;
+    height: 30%;
+    float:right;
+    align-items: center;
+    text-align: center;
+    border-bottom: 2px solid #9097DE ;  
+} 
+#earn {
+    display: inline-block;
+    
+    border-top: 2px solid #9097DE ;  
+    /* margin-left: 40px;
+    margin-right: 40px; */
+    padding: 30%;
+    width : 20px;
+    height: 20px;
+
+    box-sizing : border-box;
+    
+    align-items: center;
+    text-align: center;
+
+}
+#total_money{
+    text-align: center;
+    padding-left: 0;
+
+
 }
 #total_use {
+    font-size: x-large;
+    margin-left: auto;
+    margin-right: auto;
+
+    border-radius: 25px;
     border: 2px solid #9097DE ;
-    margin-top : 10px;
-    margin-left: 15px;
-    margin-right:5px;
-    padding: 20px;
-    width : 100px;
-    height : 200px;
+    margin-top : 5px;
+    /* margin-left: 15px;
+    margin-right:5px; */
+    padding: 10px;
+    width : 200px;
+    height : 60px;
     box-sizing : border-box;
-    float: left ;
-}
-
-#tbl0{                               /*날씨 섹션의 표 스타일에 해당한다*/
-width : 45%;
-border : 2px solid #435399;
-}
-
-#tbl0 th{
-    border : 1px solid #435399;
+    /* float: left ; */
+    color: rgb(9, 9, 137);
     text-align: center;
+
 }
 
-#tbl0 td{
-    border : 1px solid #435399;
-    text-align: center;
+
+#form_input{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    width : 90%;
+    height : 60px;
+    box-sizing : border-box;
+    display: flow-root;
+
+    
+   
 }
+#form1{
+    width: 40%;
+    float: left;
+    padding: auto;
+    
+}
+#form2{
+    width: 40%;
+    float: right;
+}
+#form3{
+    text-align: center;
+    box-sizing : border-box;
+    width: 90%;
+    padding: 50px;
+
+}
+
+
+#weather_icon {
+    font-size: 50px;
+}
+
+
 
 #wea{
     margin-left: 10px;
+    text-align: center;
 }
 
 #preview{
