@@ -186,62 +186,125 @@
         
         </section>
         <section id="s2">
-            <h2 class="c2"><i class="material-icons">room</i>&nbsp;&nbsp;오늘 간 곳</h2>
+            <h2 class="c2">오늘 간 곳</h2>
             <p class="pc3">
                 <div id="map"></div>
                 <p>
-                    <button onclick="hideMarkers()">마커 다시하기</button>
+                    <!--검색, 마크 지우기, -->
+                    <input id="name">
+                    <button onclick="plusMarker()">추가</button>
+                    <button onclick="backMarkers()">이전</button>
+                    <button onclick="resetMarkers()">reset</button>
+
+                    <input type="submit" value="확인" action="#">
                 </p> 
-                <em>클릭한 위치에 마커가 표시됩니다!</em>
+                <p id="p2"></p>
+                <p>방문한 곳 : <span id="places"></span></p>
                     
                 <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=fbb539f998f9d6b3f5cdb86ed95813f8"></script>
                 <script>
                 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
                     mapOption = { 
-                        center: new kakao.maps.LatLng(35.23339810762033, 129.07839449961048), // 지도의 중심좌표. 부산대로 잡았다.
+                        center: new kakao.maps.LatLng(35.23339810762033, 129.07839449961048), // 지도의 중심좌표: 부산대
                         level: 3 // 지도의 확대 레벨
                     };
                 
                 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
                 
+                var marker = new kakao.maps.Marker({
+                    position: new kakao.maps.LatLng(35.23339810762033, 129.07839449961048)
+                });
+
+                var lat=0;
+                var lng=0;
+
+                //marker.setMap(map)
                 // 지도를 클릭했을때 클릭한 위치에 마커를 추가하도록 지도에 클릭이벤트를 등록합니다
                 kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
+
+                    marker.setMap(map);
+
+                    var latlng = mouseEvent.latLng;
+                    lat = latlng.getLat();
+                    lng = latlng.getLng();
+
+                    marker.setPosition(latlng);
+
                     // 클릭한 위치에 마커를 표시합니다 
                     addMarker(mouseEvent.latLng);             
                 });
                 
-                // 지도에 표시된 마커 객체를 가지고 있을 배열입니다
                 var markers = [];
+                var realMarkers = [];
+                var names = [];
+    
+                // 부산대에 마커 표시
+                //addMarker(new kakao.maps.LatLng(35.23339810762033, 129.07839449961048));
                 
-                // 마커 하나를 지도위에 표시합니다. 부산대 좌표입니다.
-                addMarker(new kakao.maps.LatLng(35.23339810762033, 129.07839449961048));
-                
-                // 마커를 생성하고 지도위에 표시하는 함수입니다
+                // 마커를 생성하고 지도에 표시
                 function addMarker(position) {
-                    
-                    // 마커를 생성합니다
+
+                    // 마커 생성
                     var marker = new kakao.maps.Marker({
                         position: position
                     });
                 
-                    // 마커가 지도 위에 표시되도록 설정합니다
-                    marker.setMap(map);
-                    
-                    // 생성된 마커를 배열에 추가합니다
-                    markers.push(marker);
+                    //marker.setMap(map); //지도 위 마커 표시
+                    document.getElementById('p2').textContent = "위도 : " + lat + ", 경도 : " + lng ;
+
+                    markers.push(marker); //배열에 새로운 마커 추가
+                    console.log(markers.length);
                 }
                 
                 // 배열에 추가된 마커들을 지도에 표시하거나 삭제하는 함수입니다
                 function setMarkers(map) {
                     for (var i = 0; i < markers.length; i++) {
                         markers[i].setMap(map);
-                    }            
+                    }
+                    for (var i = 0; i < realMarkers.length; i++) {
+                        realMarkers[i].setMap(map);
+                    }
+                }
+                
+                function backMarkers() {
+                    marker.setMap(null);
+                    markers[markers.length-1].setMap(null);
+                    markers.length=markers.length-1;
+                    markers[markers.length-1].setMap(map);
+                    if (markers[markers.length-1] == realMarkers[realMarkers.length-1]) {
+                        names.pop();
+                        //document.getElementById('places').innerHTML = names;
+                        //names.pop();
+                        realMarkers.length=realMarkers.length-1;
+                    }
+                    document.getElementById('places').innerHTML = names;
+                    console.log(markers.length, realMarkers.length);
+                }
+            
+
+                function plusMarker() {
+                    realMarkers.push(markers[markers.length-1]);
+                    realMarkers[realMarkers.length-1].setMap(map);
+
+                    var name = document.getElementById('name').value;
+                    if (name == "") {
+                        window.alert("장소명을 입력하세요.");
+                    } else { 
+                        names.push(name);
+                        document.getElementById('places').innerHTML = names;
+                        document.getElementById('name').value = null;
+                    }
                 }
                 
                 // "마커 감추기" 버튼을 클릭하면 호출되어 배열에 추가된 마커를 지도에서 삭제하는 함수입니다
-                function hideMarkers() {
-                    setMarkers(null);    
+                function resetMarkers() {
+                    setMarkers(null);
+                    markers.length=0;
+                    realMarkers.length=0;
+                    document.getElementById('p2').textContent = " ";
+                    document.getElementById('places').innerHTML = " ";
                 }
+
                 </script>
 
 
