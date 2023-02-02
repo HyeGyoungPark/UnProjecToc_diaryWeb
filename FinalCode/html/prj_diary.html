@@ -7,15 +7,53 @@
     </head>
     <body>
         <script type="text/javascript" src="./data.js"></script>
-        <header>
+        <header id="header">
             <div>
                 <h1>DIARY</h1>
+                <button id="theme_change" onclick="change_theme()">테마 변경하기</button>
                 <p>
-                    <input type="text" name="txt_name" id="txt_name" placeholder="당신의 이름">   <!--헤더에 이름을 적는 칸-->
+                    <input type="text" name="txt_name" id="txt_name" placeholder="당신의 이름"> <!--헤더에 이름을 적는 칸-->
                 </p>
             </div>
         </header>
-
+    
+        <script>
+            var i = 0;
+            function change_theme() {
+                if (i == 0) {
+                    const element_header = document.getElementById('header');
+                    element_header.style.cssText = 'background:linear-gradient(to right,  #fdb1fd, #ffd9a8)';
+                    const element_nav = document.getElementById('nav');
+                    element_nav.style.cssText = 'background:linear-gradient(to right,  #fdb1fd, #ffd9a8)';
+                    $("h2").css("background-color","#535785");
+                    i = 1;
+                }
+                else {
+                    const element_header = document.getElementById('header');
+                    element_header.style.cssText = ' background: linear-gradient(to right, #f6ffd9, #c1d3ff)';
+                    const element_nav = document.getElementById('nav');
+                    element_nav.style.cssText = ' background: linear-gradient(to right, #f6ffd9, #c1d3ff)';
+                    
+                    // $('h2').css('background-color', '#ffcbbc');
+                    // $('h2').cssText = 'background-color : #ffcbbc';
+                    i = 0;
+                }
+    
+                // element_section.cssText('background-color' ,'#ffcbbc');
+                // element_section.style.cssText ='background-color: #ffcbbc';
+                // const element_section_c2 = document.getElementsByClassName('c2');
+                // element_section_c2.style.cssText ='background-color: #ffcbbc';
+                // const element_section_c3 = document.getElementsByClassName('c3');
+                // element_section_c3.style.cssText ='background-color: #ffcbbc';
+                // const element_section_c4 = document.getElementsByClassName('c4');
+                // element_section_c4.style.cssText ='background-color: #ffcbbc';
+    
+            }
+        </script>
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
+            integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    
+    
         <nav>
             <a href="#s1">[오늘 한 일]</a>     <!--nav 기능으로 바로 날씨 기록하고 싶으면 내려갈 수 있다-->
             <a href="#s2">[오늘 간 곳]</a>
