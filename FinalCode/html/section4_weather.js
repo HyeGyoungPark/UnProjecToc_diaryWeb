@@ -128,4 +128,5 @@ function displayResponse() {
 
   xhr.open("GET", url);
   xhr.send();
+
 }
