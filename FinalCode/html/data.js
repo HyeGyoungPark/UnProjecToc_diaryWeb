@@ -8,8 +8,8 @@ xhr.addEventListener("readystatechange", function () {
     }
         
 });
-function displaydataResponse(){
-    window.open("./past_diary.html");
+/*function displaydataResponse(){
+    location.href='./section0_loadmainpage.html';
     var url = "http://localhost:3000/save"                //확인을 눌렀을 때 작동하는 함수입니다.
 
     var msg = document.getElementById('msg').value;
@@ -18,4 +18,8 @@ function displaydataResponse(){
 
     xhr.open("GET", url);
     xhr.send();
+}*/
+
+function writediaryResponse(){
+    location.href='./prj_diary.html';
 }

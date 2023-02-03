@@ -3,20 +3,25 @@
 <head>
     <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons"> <!--아이콘을 사용하기 위해서 사용-->
     <link rel="stylesheet" href="./design.css">
-
+    <script type="text/javascript" src="./section1_write.js"></script>
 </head>
 
 <body>
     <h2 class="c1"><i class="material-icons">today</i>&nbsp;&nbsp;오늘 한 일</h2> 
-    <form action="#">
+
+    <form id="writepage">
       <input id="title" type="text" placeholder="제목">
       <input id="msg" placeholder="다이어리 작성하기" type="text">
+
       <label for="upload">
         <div class="img_btn">사진 추가하기</div>
       </label>
+      
       <input type="file" name="file" id="upload" onchange="readURL(this);">
+      
       <img id="preview" />
       <input type="submit" id="save_btn">
+    
     </form>
         <!--textarea로 해서 사용하는 문자에 구애받지 않게 했고, 칸의 크기도 조절할 수 있게 했다-->
     <script>

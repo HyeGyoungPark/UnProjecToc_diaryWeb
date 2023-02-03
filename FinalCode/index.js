@@ -1,21 +1,48 @@
 const express = require('express')
 const app = express()
 const port = 3000
-var dbConfig = require('./db.js');
-var conn = dbConfig.init();
-
-dbConfig.connect(conn);
+var bodyParser = require('body-parser');
 
 app.use(express.static('html'))
 
+var mysql = require('mysql')
+var dbInfo = mysql.createConnection({
+  host : "127.0.0.1",
+  port : 3306,
+  user : "root",
+  password : "hyehye66",
+  database : "diarydb"
+});
+
+dbInfo.connect();
+
+dbInfo.query("SELECT * FROM diary",function(error, results, fields){
+            if (error) console.error('mysql 연결에러 : '+error);
+            else console.log('records: ', results)  });
+
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('/save', function(req, res){
+  dbInfo.connect();
+  const date = new Date();
+  var Diarytitle = req.query.diarytitle
+  var Diarycontents = req.query.content
+  var Datedata = req.query.datedata
+  var Picdata = req.query.upload
 
-  var Diarytitle = req.body.title
-  var Diarycontents = req.body.contents
+  dbInfo.query("INSERT INTO diary (title, content, datedata) VALUES ('"+Diarytitle+"', '"+Diarycontents+"', '"+Datedata+"')",
+  function(error, result, fields) {
+    if(error) {
+      res.send('err : '+error)
+    }
+    else {
+      console.log(result.body)
+      res.send('success create write title: '+Diarytitle+'content: '+Diarycontents+'Datedata: '+Datedata)
+    }
 
-  res.send('title : ' + Diarytitle+'contents'+Diarycontents)
+  })
 })
+
 
 
 app.get('/weather', function(req,res){
